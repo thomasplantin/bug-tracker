@@ -44,3 +44,19 @@ The goal of this project is to create a bug tracking system that developers can 
 |       1       | Back-end: Database + API                            |
 |       2       | Front-end: Application Design                       |
 |       3       | Front-end & Back-end: Integrating Views and Designs |
+
+<br>
+
+### Instructions
+
+**Installing requirements.txt file inside virtual env with Python:**
+
+    1 - Go to your project's root directory (bug-tracker) -> `cd /Path/to/project/root/bug-tracker`
+
+    2 - Create your virtual env (one of the two following ways):
+        - if `python -V` gives Python3, then run `virtualenv .`
+        - if `python -V` gives Python2, then run `virtualenv -p python3 .`
+
+    3 - Activate the environment -> `source bin/activate`
+
+    4 - Install the requirements -> `pip install -r requirements.txt`
