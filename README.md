@@ -31,7 +31,7 @@ The goal of this project is to create a bug tracking system that developers can 
     - Ticket Number
     - Author
     - Assignee(s)
-    - Submission Date
+    - Date Posted
     - Deadline
     - Priority Level (Low, Medium, High)
     - Current State (Open, Closed, Under Development)
