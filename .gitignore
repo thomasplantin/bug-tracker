@@ -5,3 +5,7 @@ bin/
 # Omit pycache and migration files of the ticket_system app
 ticket_system/__pycache__/
 ticket_system/migrations/
+
+# Omit pycache and migration files of the users app
+users/__pycache__/
+users/migrations/
