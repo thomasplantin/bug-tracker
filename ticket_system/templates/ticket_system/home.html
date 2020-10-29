@@ -1,0 +1,53 @@
+{% extends "ticket_system/base.html" %}
+{% block content %}
+    {% for ticket in tickets %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <table class="ticket-top">
+                        <tr>
+                            <td>
+                                <a class="mr-2" href="#">{{ ticket.author }}</a>
+                                <small class="text-muted">Posted on {{ ticket.date_posted|date:"F d, Y" }}</small>
+                                <br>
+                                {% if ticket.assignee %}
+                                <small>Assigned to <a class="mr-2" href="#">{{ ticket.assignee }}</a></small>
+                                {% else %}
+                                    <small>No Assignee</small>
+                                {% endif %}
+                                {% if ticket.deadline %}
+                                    <small class="text-muted deadline">Due on {{ ticket.deadline|date:"F d, Y" }}</small>
+                                {% else %}
+                                    <small class="text-muted deadline">No deadline</small>
+                                {% endif %}
+                            </td>
+                            <td class="state-float">
+                                {% if ticket.state == 'closed' %}
+                                    <p class="badge badge-success"><i class="fas fa-check-circle"></i> CLOSED</p>
+                                {% elif ticket.state == 'open' %}
+                                    <p class="badge badge-info"><i class="fas fa-folder-open"></i> OPEN</p>
+                                {% else %}
+                                    <p class="badge badge-warning"><i class="fas fa-wrench"></i> STAGING</p>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="article-metadata">
+                    <small><a href="#">Ticket #{{ ticket.id }}</a></small>
+                    {% if ticket.priority == 'low' %}
+                        <span class="badge badge-success">MODERATE</span>
+                    {% elif ticket.priority == 'high' %}
+                        <span class="badge badge-danger">CRITICAL</span>
+                    {% else %}
+                        <span class="badge badge-warning">IMPORTANT</span>
+                    {% endif %}
+                </div>
+                <h5><a class="article-title" href="#">{{ ticket.title }}</a></h5>
+                {% if ticket.description %}
+                    <small class="article-content">{{ ticket.description }}</small>
+                {% endif %}
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

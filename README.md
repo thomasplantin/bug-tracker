@@ -31,7 +31,7 @@ The goal of this project is to create a bug tracking system that developers can 
     - Ticket Number
     - Author
     - Assignee(s)
-    - Submission Date
+    - Date Posted
     - Deadline
     - Priority Level (Low, Medium, High)
     - Current State (Open, Closed, Under Development)
@@ -105,3 +105,13 @@ The goal of this project is to create a bug tracking system that developers can 
 
     python manage.py makemigrations 
     python manage.py migrate
+
+<br>
+
+---
+
+**Connecting to MySQL DB from command line:**
+
+Open the command line and type:
+
+    mysql -h mysql–instance1.123456789012.us-east-1.rds.amazonaws.com -P 3306 -u mymasteruser -p
