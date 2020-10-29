@@ -5,7 +5,7 @@ from datetime import datetime
 issues = [
     {
         'title': 'Bug Post 1',
-        'description': 'First post content',
+        'description': 'First post description',
         'ticket_id': '13698',
         'author': 'CoreyMS',
         'assignee': 'Jane Doe',
@@ -16,7 +16,7 @@ issues = [
     }, 
     {
         'title': 'Bug Post 2',
-        'description': 'Second post content',
+        'description': 'Second post description',
         'ticket_id': '13697',
         'author': 'Jane Doe',
         'assignee': '',
@@ -27,7 +27,7 @@ issues = [
     }, 
     {
         'title': 'Bug Post 3',
-        'description': 'Third post content',
+        'description': 'Third post description',
         'ticket_id': '13696',
         'author': 'Thomas Plantin',
         'assignee': 'Rodrigo Zurita',

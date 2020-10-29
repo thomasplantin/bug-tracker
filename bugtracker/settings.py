@@ -79,6 +79,9 @@ WSGI_APPLICATION = 'bugtracker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'sql_mode': 'traditional',
+        },
         'NAME': config('RDS_DB_NAME'),
         'USER': config('RDS_USERNAME'),
         'PASSWORD': config('RDS_PASSWORD'),

@@ -83,18 +83,11 @@ a.article-title:hover {
     font-size: 2.5rem;
 }
 
-.deadline {
-    padding-left: 200px;
+.ticket-top {
+    width: 100%;
 }
 
-.priority-low {
-    color: green;
-}
-
-.priority-hi {
-    color: red;
-}
-
-.priority-med {
-    color: #cdb30c;
+.state-float{
+    text-align: right;
+    font-size: 1.5rem;
 }

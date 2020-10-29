@@ -4,38 +4,47 @@
         <article class="media content-section">
             <div class="media-body">
                 <div class="article-metadata">
-                    <a class="mr-2" href="#">{{ issue.author }}</a>
-                    <small class="text-muted">Posted on {{ issue.date_issueed }} -- </small>
-                    {% if issue.deadline %}
-                        <small class="text-muted deadline">Due on {{ issue.deadline }}</small>
-                    {% else %}
-                        <small class="text-muted deadline">No deadline</small>
-                    {% endif %}
-                    <br>
-                    {% if issue.assignee %}
-                        <h6>
-                            Assigned to
-                            <a class="mr-2" href="#">{{ issue.assignee }}</a>
-                        </h6>
-                    {% else %}
-                        <h6>
-                            No specified assignee
-                        </h6>
-                    {% endif %}
+                    <table class="ticket-top">
+                        <tr>
+                            <td>
+                                <a class="mr-2" href="#">{{ issue.author }}</a>
+                                <small class="text-muted">Posted on {{ issue.date_posted }}</small>
+                                <br>
+                                {% if issue.assignee %}
+                                <small>Assigned to <a class="mr-2" href="#">{{ issue.assignee }}</a></small>
+                                {% else %}
+                                    <small>No Assignee</small>
+                                {% endif %}
+                                {% if issue.deadline %}
+                                    <small class="text-muted deadline">Due on {{ issue.deadline }}</small>
+                                {% else %}
+                                    <small class="text-muted deadline">No deadline</small>
+                                {% endif %}
+                            </td>
+                            <td class="state-float">
+                                {% if issue.state == 'closed' %}
+                                    <p class="badge badge-success"><i class="fas fa-check-circle"></i> CLOSED</p>
+                                {% elif issue.state == 'open' %}
+                                    <p class="badge badge-info"><i class="fas fa-folder-open"></i> OPEN</p>
+                                {% else %}
+                                    <p class="badge badge-warning"><i class="fas fa-wrench"></i> STAGING</p>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="article-metadata">
-                    <small><a class="article-title" href="#">Ticket #{{ issue.ticket_id }}</a></small>
+                    <small><a href="#">Ticket #{{ issue.ticket_id }}</a></small>
                     {% if issue.priority == 'low' %}
-                        <small class="priority-low"> Priority: {{ issue.priority }}</small>
+                        <span class="badge badge-success">MODERATE</span>
                     {% elif issue.priority == 'high' %}
-                        <small class="priority-hi"> Priority: {{ issue.priority }}</small>
+                        <span class="badge badge-danger">CRITICAL</span>
                     {% else %}
-                        <small class="priority-med"> Priority: {{ issue.priority }}</small>
+                        <span class="badge badge-warning">IMPORTANT</span>
                     {% endif %}
-                    <small>State: {{ issue.state }}</small>
                 </div>
-                <h2><a class="article-title" href="#">{{ issue.title }}</a></h2>
-                <p class="article-content">{{ issue.description }}</p>
+                <h5><a class="article-title" href="#">{{ issue.title }}</a></h5>
+                <small class="article-content">{{ issue.description }}</small>
             </div>
         </article>
     {% endfor %}
