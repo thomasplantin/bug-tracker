@@ -1,7 +1,7 @@
 .env
-lib/*
-bin/*
+lib/
+bin/
 
 # Omit pycache and migration files of the ticket_system app
-ticket_system/__pycache__
-ticket_system/migrations
+ticket_system/__pycache__/
+ticket_system/migrations/
