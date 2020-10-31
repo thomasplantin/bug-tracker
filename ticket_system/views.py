@@ -14,17 +14,3 @@ def about(request):
         'title': 'About',
     }
     return render(request, 'ticket_system/about.html', context)
-
-
-def login(request):
-    context = {
-        'title': 'Login',
-    }
-    return render(request, 'ticket_system/login.html', context)
-
-
-def register(request):
-    context = {
-        'title': 'Register',
-    }
-    return render(request, 'ticket_system/register.html', context)
