@@ -2,6 +2,7 @@
 {% block content %}
     {% for ticket in tickets %}
         <article class="media content-section">
+            <img class="rounded-circle article-img" src="{{ ticket.author.profile.image.url }}" alt="">
             <div class="media-body">
                 <div class="article-metadata">
                     <table class="ticket-top">

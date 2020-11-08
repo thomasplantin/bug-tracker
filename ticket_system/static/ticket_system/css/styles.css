@@ -91,3 +91,7 @@ a.article-title:hover {
     text-align: right;
     font-size: 1.5rem;
 }
+
+.edit-profile-btn {
+    margin-top: 5%;
+}
