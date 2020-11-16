@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-
+from django.urls import reverse
 # Create your models here.
 class Ticket(models.Model):
     title = models.CharField(max_length=100, unique=True)
@@ -14,4 +14,8 @@ class Ticket(models.Model):
     state = models.CharField(max_length=20)
 
     def __str__(self):
-        return "Title = {} written by {} on {}.".format(self.title, self.author, self.date_posted) 
+        return "Title = {} written by {} on {}.".format(self.title, self.author, self.date_posted)
+
+    def get_absolute_url(self):
+        return reverse('ticket-detail', kwargs={'pk': self.pk})
+        

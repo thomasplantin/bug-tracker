@@ -35,7 +35,7 @@
                     </table>
                 </div>
                 <div class="article-metadata">
-                    <small><a href="#">Ticket #{{ ticket.id }}</a></small>
+                    <small><a href="{% url 'ticket-detail' ticket.id %}">Ticket #{{ ticket.id }}</a></small>
                     {% if ticket.priority == 'low' %}
                         <span class="badge badge-success">MODERATE</span>
                     {% elif ticket.priority == 'high' %}
@@ -44,7 +44,7 @@
                         <span class="badge badge-warning">IMPORTANT</span>
                     {% endif %}
                 </div>
-                <h5><a class="article-title" href="#">{{ ticket.title }}</a></h5>
+                <h5><a class="article-title" href="{% url 'ticket-detail' ticket.id %}">{{ ticket.title }}</a></h5>
                 {% if ticket.description %}
                     <small class="article-content">{{ ticket.description }}</small>
                 {% endif %}

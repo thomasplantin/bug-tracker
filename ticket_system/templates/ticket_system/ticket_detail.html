@@ -1,0 +1,52 @@
+{% extends "ticket_system/base.html" %}
+{% block content %}
+    <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}" alt="">
+        <div class="media-body">
+            <div class="article-metadata">
+                <table class="ticket-top">
+                    <tr>
+                        <td>
+                            <a class="mr-2" href="#">{{ object.author }}</a>
+                            <small class="text-muted">Posted on {{ object.date_posted|date:"F d, Y" }}</small>
+                            <br>
+                            {% if object.assignee %}
+                            <small>Assigned to <a class="mr-2" href="#">{{ object.assignee }}</a></small>
+                            {% else %}
+                                <small>No Assignee</small>
+                            {% endif %}
+                            {% if object.deadline %}
+                                <small class="text-muted deadline">Due on {{ object.deadline|date:"F d, Y" }}</small>
+                            {% else %}
+                                <small class="text-muted deadline">No deadline</small>
+                            {% endif %}
+                        </td>
+                        <td class="state-float">
+                            {% if object.state == 'closed' %}
+                                <p class="badge badge-success"><i class="fas fa-check-circle"></i> CLOSED</p>
+                            {% elif object.state == 'open' %}
+                                <p class="badge badge-info"><i class="fas fa-folder-open"></i> OPEN</p>
+                            {% else %}
+                                <p class="badge badge-warning"><i class="fas fa-wrench"></i> STAGING</p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="article-metadata">
+                <small><a href="#">Ticket #{{ object.id }}</a></small>
+                {% if object.priority == 'low' %}
+                    <span class="badge badge-success">MODERATE</span>
+                {% elif object.priority == 'high' %}
+                    <span class="badge badge-danger">CRITICAL</span>
+                {% else %}
+                    <span class="badge badge-warning">IMPORTANT</span>
+                {% endif %}
+            </div>
+            <h5 class="article-title">{{ object.title }}</h5>
+            {% if object.description %}
+                <small class="article-content">{{ object.description }}</small>
+            {% endif %}
+        </div>
+    </article>
+{% endblock content %}
