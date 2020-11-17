@@ -6,6 +6,7 @@ from django.views.generic import (
     CreateView
 )
 from .models import Ticket
+from .forms import TicketForm
 
 # Create your views here.
 def home(request):
@@ -28,7 +29,7 @@ class TicketDetailView(DetailView):
 
 class TicketCreateView(LoginRequiredMixin, CreateView):
     model = Ticket
-    fields=['title', 'description', 'assignee', 'priority', 'deadline', 'state']
+    form_class = TicketForm
 
     def form_valid(self, form):
         form.instance.author = self.request.user
