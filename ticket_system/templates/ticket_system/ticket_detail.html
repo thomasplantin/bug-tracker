@@ -7,11 +7,11 @@
                 <table class="ticket-top">
                     <tr>
                         <td>
-                            <a class="mr-2" href="#">{{ object.author }}</a>
+                            <a class="mr-2" href="{% url 'user-tickets' ticket.author.username%}">{{ object.author }}</a>
                             <small class="text-muted">Posted on {{ object.date_posted|date:"F d, Y" }}</small>
                             <br>
                             {% if object.assignee %}
-                            <small>Assigned to <a class="mr-2" href="#">{{ object.assignee }}</a></small>
+                            <small>Assigned to <a class="mr-2" href="{% url 'user-tickets' ticket.assignee.username%}">{{ object.assignee }}</a></small>
                             {% else %}
                                 <small>No Assignee</small>
                             {% endif %}

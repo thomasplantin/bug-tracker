@@ -1,10 +1,12 @@
+from django.contrib.auth.models import User
 from django.urls import path
 from .views import (
     TicketListView, 
     TicketDetailView, 
     TicketCreateView,
     TicketUpdateView,
-    TicketDeleteView
+    TicketDeleteView,
+    UserTicketListView
 )
 from . import views
 
@@ -15,5 +17,6 @@ urlpatterns = [
     path('ticket/new/', TicketCreateView.as_view(), name='ticket-create'),
     path('ticket/<int:pk>/update/', TicketUpdateView.as_view(), name='ticket-update'),
     path('ticket/<int:pk>/delete/', TicketDeleteView.as_view(), name='ticket-delete'),
+    path('user/<str:username>/', UserTicketListView.as_view(), name='user-tickets'),
     path('about/', views.about, name='ticket-system-about'), # Calling the about function from the views.py file
 ]
