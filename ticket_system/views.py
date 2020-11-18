@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     ListView, 
     DetailView, 
-    CreateView
+    CreateView,
+    UpdateView,
+    DeleteView
 )
 from .models import Ticket
 from .forms import TicketForm
@@ -34,6 +36,32 @@ class TicketCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+class TicketUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Ticket
+    form_class = TicketForm
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        ticket = self.get_object()
+        if self.request.user == ticket.author:
+            return True
+        return False
+
+
+class TicketDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Ticket
+    success_url = '/'
+
+    def test_func(self):
+        ticket = self.get_object()
+        if self.request.user == ticket.author:
+            return True
+        return False
 
 
 def about(request):

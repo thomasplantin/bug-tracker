@@ -43,6 +43,13 @@
                     {% else %}
                         <span class="badge badge-warning">IMPORTANT</span>
                     {% endif %}
+                    {% if ticket.author == user %}
+                        <div style="float:right;">
+                            <small><a class="btn btn-secondary btn-sm" href="{% url 'ticket-update' ticket.id %}"><em class="fas fa-pencil-alt"></em></a></small>
+                            <small><a class="btn btn-danger btn-sm" href="{% url 'ticket-delete' ticket.id %}"><em class="fas fa-trash-alt"></em></a></small>
+                        </div>
+                        <p></p>
+                    {% endif %}
                 </div>
                 <h5><a class="article-title" href="{% url 'ticket-detail' ticket.id %}">{{ ticket.title }}</a></h5>
                 {% if ticket.description %}
