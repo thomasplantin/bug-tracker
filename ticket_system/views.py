@@ -36,6 +36,7 @@ class UserTicketListView(ListView):
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
+        email = User.objects.get(username=user).email
         return Ticket.objects.filter(author=user).order_by('-date_posted')
 
 
