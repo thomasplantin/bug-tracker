@@ -38,6 +38,16 @@ class UserTicketListView(ListView):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         email = User.objects.get(username=user).email
         return Ticket.objects.filter(author=user).order_by('-date_posted')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        queryset = self.get_queryset()
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        email = User.objects.get(username=user).email
+        queryset = queryset.filter(author=user).order_by('-date_posted')
+        context['user'] = user
+        context['email'] = email
+        return context
 
 
 class TicketDetailView(DetailView):

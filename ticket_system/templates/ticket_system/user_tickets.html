@@ -1,6 +1,15 @@
 {% extends "ticket_system/base.html" %}
 {% block content %}
-    <h2 class="mb-3">Posts by {{ view.kwargs.username }} {{ tickets.0.author.email}} ({{ page_obj.paginator.count }})</h2>
+    <div class="content-section">
+        <div class="media">
+            <img class="rounded-circle account-img" alt="" src="{{ user.profile.image.url }}">
+            <div class="media-body">
+                <h2 class="account-heading">{{ user }}</h2>
+                <p class="text-secondary">{{ email }}</p>
+            </div>
+        </div>
+    </div>
+    <h2 class="mb-3">Posts by {{ user }} ({{ page_obj.paginator.count }})</h2>
     {% for ticket in tickets %}
         <article class="media content-section">
             <img class="rounded-circle article-img" src="{{ ticket.author.profile.image.url }}" alt="">
