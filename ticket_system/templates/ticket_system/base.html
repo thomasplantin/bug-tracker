@@ -14,6 +14,12 @@
     <!-- My CSS -->
     <!-- {% load static %} -->
     <link rel="stylesheet" type="text/css" href="{% static 'ticket_system/css/styles.css' %}" crossorigin="anonymous">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'ticket_system/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'ticket_system/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'ticket_system/favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'ticket_system/favicon/site.webmanifest' %}">
     
     {% if title %}
         <title>Bug Tracker - {{ title }}</title>
